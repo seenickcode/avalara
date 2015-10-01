@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/jmcvetta/napping"
+	"gopkg.in/jmcvetta/napping.v2"
 )
 
 const PostalEndpoint = "https://taxrates.api.avalara.com:443/postal"

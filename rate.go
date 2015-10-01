@@ -1,6 +1,6 @@
 package avalara
 
-import "github.com/jmcvetta/napping"
+import "gopkg.in/jmcvetta/napping.v2"
 
 type TotalRate struct {
 	Amount float64 `json:"totalRate"`
@@ -15,10 +15,10 @@ type Rate struct {
 
 func (c *Client) GetPostalCodeRate(country string, postal string) (*TotalRate, error) {
 	r := &TotalRate{}
-	p := &napping.Params{
+	p := napping.Params{
 		"country": country,
 		"postal":  postal,
-	}
-	_, err := c.httpClient.Get(PostalEndpoint, p, r, nil)
+	}.AsUrlValues()
+	_, err := c.httpClient.Get(PostalEndpoint, &p, r, nil)
 	return r, err
 }
